@@ -3,8 +3,8 @@ import { FaArrowUp } from 'react-icons/fa';
 
 import Hero from '../components/hero';
 import Portfolio from '../components/portfolio/index';
-import Works from '../components/works/index';
 import About from '../components/about/index';
+import Works from '../components/works/index';
 import Footer from '../components/footer/index';
 import Certify from '../components/certify/index';
 import Insta from '../components/insta/index';
@@ -38,11 +38,11 @@ function Landingpage() {
         <section id="hero">
           <Hero />
         </section>
-        <section id="portfolio">
-          <Portfolio />
-        </section>
         <section id="about">
           <About />
+          <section id="portfolio">
+            <Portfolio />
+          </section>
         </section>
         <section id="works">
           <Works />
