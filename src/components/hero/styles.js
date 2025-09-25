@@ -4,7 +4,6 @@ export const heroStyles = {
   hero: {
     height: '100vh',
     display: 'flex',
-
     backgroundImage: `url(${meImage})`, // usa a variável importada
     backgroundSize: 'cover',
     backgroundPosition: 'right center',
@@ -15,13 +14,21 @@ export const heroStyles = {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    gap: 0,
+    gap: 8,
     color: 'white',
     maxWidth: '80%', // garante que o texto não passe do meio
   },
 
   body: {
     color: '#B7F62B',
+    fontSize: '24px',
+    margin: 0,
+    padding: '4px 0px 0px',
+    fontWeight: 'lighter',
+  },
+
+  complement: {
+    color: '#EDEDF3',
     fontSize: '24px',
     margin: 0,
     padding: '4px 0px 0px',

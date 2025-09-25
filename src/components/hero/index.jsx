@@ -8,6 +8,10 @@ function Hero() {
     <section style={heroStyles.hero}>
       <div style={heroStyles.content}>
         <p style={heroStyles.body}> Igor Josef Teufel </p>
+        <p style={heroStyles.complement}>
+          {' '}
+          Transformo ideias em experiências digitais{' '}
+        </p>
         <h1 style={heroStyles.title}>UX/UI Designer</h1>
 
         <div style={heroStyles.buttonContainer}>
