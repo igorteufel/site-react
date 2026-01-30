@@ -5,7 +5,6 @@ const styleCertify = {
     padding: '80px 0',
     display: 'flex',
     justifyContent: 'center',
-    backgroundColor: '#0B090D',
   },
 
   container: {

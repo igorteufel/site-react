@@ -5,39 +5,42 @@ const stylesAbout = {
   },
 
   title: {
-    fontSize: 'clamp(28px, 5vw, 40px)', // responsivo natural
+    fontSize: 'clamp(28px, 5vw, 40px)',
     fontWeight: 'bold',
-    margin: 0,
     marginBottom: '32px',
-    textAlign: 'left',
-    color: 'white',
   },
 
   subtitle: {
-    fontSize: 'clamp(16px, 2vw, 24px)', // responsivo natural
-    fontWeight: '400',
+    fontSize: 'clamp(16px, 2vw, 24px)',
     opacity: 0.8,
     lineHeight: 1.5,
     marginBottom: '16px',
-    textAlign: 'left',
   },
 
-  imagesContainer: {
+  wrapper: {
+    overflow: 'hidden',
+    marginTop: '32px',
+  },
+
+  carousel: {
     display: 'flex',
-    flexWrap: 'wrap', // 👈 evita quebrar feio
     gap: '24px',
-    padding: '32px 0 0',
+    width: 'fit-content',
+    animation: 'aboutScroll 40s linear infinite',
+    willChange: 'transform',
   },
 
-  imageWrapper: {
-    flex: '1 1 300px', // 👈 cada imagem ocupa mínimo 300px
-    maxWidth: 'auto',
+  slide: {
+    flex: '0 0 360px',
+    aspectRatio: '4 / 3',
   },
 
   image: {
     width: '100%',
-    borderRadius: '12px',
+    height: '100%',
     objectFit: 'cover',
+    borderRadius: '12px',
+    display: 'block',
   },
 };
 

@@ -8,7 +8,7 @@ export default function Header() {
     { label: 'Portfólio', href: '#portfolio' },
     { label: 'Sobre', href: '#about' },
     { label: 'Empresas', href: '#works' },
-    { label: 'Insta', href: '#insta' },
+    { label: 'Conectar', href: '#insta' },
   ];
 
   return (

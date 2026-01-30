@@ -1,6 +1,5 @@
-import { useRef } from 'react';
+import { useState } from 'react';
 import { stylePort } from './styles';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 import helpsiImg from '../../assets/Card01.png';
 import coopspartyImg from '../../assets/Card02.png';
@@ -31,83 +30,53 @@ const projects = [
     id: 5,
     title: 'Lotus Design System',
     image: lotusIMG,
-    link: '', // 👉 coloca o link real depois
+    link: '',
   },
   {
     id: 1,
     title: 'Helpsi 2024',
     image: helpsiImg,
-    link: '', // 👉 coloca o link real depois
+    link: '',
   },
 ];
 
 function Portfolio() {
-  const carouselRef = useRef(null);
-
-  const scroll = (direction) => {
-    if (carouselRef.current) {
-      const scrollAmount = 320;
-      carouselRef.current.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth',
-      });
-    }
-  };
+  const [hovered, setHovered] = useState(null);
 
   return (
     <section style={stylePort.section}>
       <h1 style={stylePort.title}>Portfólio</h1>
 
-      <div style={stylePort.wrapper}>
-        {/* seta esquerda */}
-        <button
-          style={{ ...stylePort.arrow, ...stylePort.arrowLeft }}
-          onClick={() => scroll('left')}
-        >
-          <FaChevronLeft />
-        </button>
+      <div style={stylePort.grid}>
+        {projects.map((project) => (
+          <a
+            key={project.id}
+            href={project.link}
+            target="_blank"
+            rel="noreferrer"
+            style={{
+              ...stylePort.card,
+              ...(hovered === project.id ? stylePort.cardHover : {}),
+            }}
+            onMouseEnter={() => setHovered(project.id)}
+            onMouseLeave={() => setHovered(null)}
+          >
+            {(project.title.includes('Helpsi') ||
+              project.title.includes('Lotus')) && (
+              <div style={stylePort.badge}>Em andamento</div>
+            )}
 
-        {/* cards */}
-        <div ref={carouselRef} style={stylePort.carousel}>
-          {projects.map((project) => (
-            <a
-              key={project.id}
-              href={project.link}
-              target="_blank"
-              rel="noreferrer"
-              style={stylePort.card}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.transform = 'scale(1.05)')
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.transform = 'scale(1)')
-              }
-            >
-              {/* Badge neon apenas no Helpsi e Lotus */}
-              {(project.title.includes('Helpsi') ||
-                project.title.includes('Lotus')) && (
-                <div style={stylePort.badge} className="badge-neon">
-                  Em andamento
-                </div>
-              )}
-
+            <div style={stylePort.imageWrapper}>
               <img
                 src={project.image}
                 alt={project.title}
                 style={stylePort.image}
               />
-              <p style={stylePort.cardTitle}>{project.title}</p>
-            </a>
-          ))}
-        </div>
+            </div>
 
-        {/* seta direita */}
-        <button
-          style={{ ...stylePort.arrow, ...stylePort.arrowRight }}
-          onClick={() => scroll('right')}
-        >
-          <FaChevronRight />
-        </button>
+            <p style={stylePort.cardTitle}>{project.title}</p>
+          </a>
+        ))}
       </div>
     </section>
   );

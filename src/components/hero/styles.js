@@ -4,7 +4,9 @@ export const heroStyles = {
   hero: {
     height: '100vh',
     display: 'flex',
-    backgroundImage: `url(${meImage})`, // usa a variável importada
+    position: 'relative',
+    overflow: 'hidden',
+    backgroundImage: `url(${meImage})`,
     backgroundSize: 'cover',
     backgroundPosition: 'right center',
     backgroundRepeat: 'no-repeat',
@@ -16,7 +18,7 @@ export const heroStyles = {
     justifyContent: 'center',
     gap: 8,
     color: 'white',
-    maxWidth: '80%', // garante que o texto não passe do meio
+    maxWidth: '80%',
   },
 
   body: {
@@ -61,7 +63,14 @@ export const heroStyles = {
     padding: 16,
     cursor: 'pointer',
     backgroundColor: '#0B090D',
-    transition: 'transform 0.2s ease, background-color 0.2s ease',
+    transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+    boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
+    textDecoration: 'none',
+  },
+
+  buttonHover: {
+    transform: 'translateY(-4px)',
+    boxShadow: '0 10px 20px rgba(0,0,0,0.35)',
   },
 
   buttonText: {

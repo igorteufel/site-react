@@ -11,8 +11,8 @@ const landingpageStyles = {
     minHeight: '100vh',
     width: '100%',
     padding: '32px 100px',
-    overflowX: 'hidden', // 🚀 garante que nada vaze na horizontal
-    boxSizing: 'border-box', // impede que o padding some com width
+    overflowX: 'hidden',
+    boxSizing: 'border-box',
   },
 
   content: {
@@ -22,7 +22,7 @@ const landingpageStyles = {
     margin: '0 auto',
     justifyContent: 'space-between',
     alignItems: 'center',
-    overflowX: 'hidden', // protege o conteúdo também
+    overflowX: 'hidden',
   },
 
   backToTop: {
