@@ -1,34 +1,39 @@
-import React, { useState } from 'react';
-import { headerStyles } from './styles';
+import React from 'react';
+import * as S from './styles';
 
 export default function Header() {
-  const [hovered, setHovered] = useState(null);
-
   const menuItems = [
-    { label: 'Portfólio', href: '#portfolio' },
-    { label: 'Sobre', href: '#about' },
-    { label: 'Empresas', href: '#works' },
-    { label: 'Conectar', href: '#insta' },
+    { label: 'Sobre', href: 'about' },
+    { label: 'Portfólio', href: 'portfolio' },
+    { label: 'Empresas', href: 'works' },
+    { label: 'Conectar', href: 'insta' },
   ];
 
+  const handleScroll = (id) => (e) => {
+    e.preventDefault();
+
+    const section = document.getElementById(id);
+    if (!section) return;
+
+    section.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  };
+
   return (
-    <header style={headerStyles.header}>
-      <nav style={headerStyles.nav}>
+    <S.StyledHeader>
+      <S.Nav>
         {menuItems.map((item, i) => (
-          <a
+          <S.NavLink
             key={i}
-            href={item.href}
-            style={{
-              ...headerStyles.link,
-              ...(hovered === i ? headerStyles.linkHover : {}),
-            }}
-            onMouseEnter={() => setHovered(i)}
-            onMouseLeave={() => setHovered(null)}
+            href={`#${item.href}`}
+            onClick={handleScroll(item.href)}
           >
             {item.label}
-          </a>
+          </S.NavLink>
         ))}
-      </nav>
-    </header>
+      </S.Nav>
+    </S.StyledHeader>
   );
 }

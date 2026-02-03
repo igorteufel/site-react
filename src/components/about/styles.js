@@ -1,47 +1,54 @@
-const stylesAbout = {
-  section: {
-    color: 'white',
-    padding: '80px 0',
-  },
+import styled, { keyframes } from 'styled-components';
 
-  title: {
-    fontSize: 'clamp(28px, 5vw, 40px)',
-    fontWeight: 'bold',
-    marginBottom: '32px',
-  },
+const aboutScroll = keyframes`
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+`;
 
-  subtitle: {
-    fontSize: 'clamp(16px, 2vw, 24px)',
-    opacity: 0.8,
-    lineHeight: 1.5,
-    marginBottom: '16px',
-  },
+export const Section = styled.section`
+  color: white;
+  width: 100%;
+`;
 
-  wrapper: {
-    overflow: 'hidden',
-    marginTop: '32px',
-  },
+export const Title = styled.h1`
+  font-size: clamp(24px, 5vw, 32px);
+  font-weight: bold;
+  margin-bottom: 24px;
+`;
 
-  carousel: {
-    display: 'flex',
-    gap: '24px',
-    width: 'fit-content',
-    animation: 'aboutScroll 40s linear infinite',
-    willChange: 'transform',
-  },
+export const Subtitle = styled.p`
+  font-size: clamp(16px, 5vw, 20px);
+  opacity: 0.8;
+  line-height: 1.5;
+  margin-bottom: 24px;
+`;
 
-  slide: {
-    flex: '0 0 360px',
-    aspectRatio: '4 / 3',
-  },
+export const Wrapper = styled.div`
+  overflow: hidden;
+  margin-top: 32px;
+`;
 
-  image: {
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-    borderRadius: '12px',
-    display: 'block',
-  },
-};
+export const Carousel = styled.div`
+  display: flex;
+  gap: 24px;
+  width: fit-content;
+  animation: ${aboutScroll} 40s linear infinite;
+  will-change: transform;
+`;
 
-export default stylesAbout;
+export const Slide = styled.div`
+  flex: 0 0 360px;
+  aspect-ratio: 4 / 3;
+`;
+
+export const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+`;

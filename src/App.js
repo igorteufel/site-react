@@ -1,21 +1,16 @@
 import React from 'react';
 import Landingpage from './pages/landingpage';
+import { ThemeProvider } from 'styled-components';
+import { theme } from './styles/theme';
+import { GlobalStyles } from './styles/global-styles';
 
 function App() {
   return (
     <>
-      <style>{`
-        html {
-          scroll-behavior: smooth;
-          font-family: 'Inter', sans-serif;
-        }
-        body {
-          margin: 0;
-          font-family: 'Inter', sans-serif;
-        }
-      `}</style>
-
-      <Landingpage />
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <Landingpage />
+      </ThemeProvider>
     </>
   );
 }

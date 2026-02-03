@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { styleJourney } from './styles';
+import * as S from './styles';
 import { useResponsive } from '../../hooks/useResponsive';
 
 import Next from '../../assets/nextcircle.png';
@@ -14,12 +14,6 @@ export default function Works() {
   const [hovered, setHovered] = useState(null);
 
   const responsive = {
-    title: { fontSize: isMobile ? '28px' : isTablet ? '32px' : '40px' },
-    subtitle: {
-      fontSize: isMobile ? '16px' : isTablet ? '20px' : '24px',
-      maxWidth: isMobile ? '90%' : isTablet ? '400px' : '500px',
-      textAlign: 'center',
-    },
     balloonSize: isMobile ? 60 : isTablet ? 80 : 100,
     imageSize: isMobile ? '60%' : isTablet ? '70%' : '70%',
   };
@@ -63,20 +57,21 @@ export default function Works() {
   ];
 
   return (
-    <div style={styleJourney.container}>
-      <div style={styleJourney.centerText}>
-        <h2 style={{ ...styleJourney.title, ...responsive.title }}>
-          A Jornada até aqui
-        </h2>
-        <p style={{ ...styleJourney.subtitle, ...responsive.subtitle }}>
+    <S.Container id="works">
+      {/* TEXTO FIXO NO CENTRO */}
+      <S.CenterText>
+        <S.Title>A Jornada até aqui</S.Title>
+
+        <S.Subtitle>
           Há mais de 5 anos atuo como UX/UI Design, criando produtos digitais
           para web e mobile. Passei por empresas como Next Tecnologia, Weni,
           Duosystem, Track.co e, atualmente, Coopersystem, sempre unindo design
           e estratégia para entregar experiências consistentes e evoluir Design
           Systems.
-        </p>
-      </div>
+        </S.Subtitle>
+      </S.CenterText>
 
+      {/* BALÕES ORBITANDO */}
       {balloons.map((b) => {
         const randomAngle = Math.random() * 360;
 
@@ -91,43 +86,40 @@ export default function Works() {
               ease: 'linear',
             }}
             style={{
-              ...styleJourney.orbit,
               width: b.radius * 2,
               height: b.radius * 2,
               marginLeft: -b.radius,
               marginTop: -b.radius,
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
             }}
           >
-            <div
-              style={{
-                ...styleJourney.balloon,
-                width: responsive.balloonSize,
-                height: responsive.balloonSize,
-                top: '50%',
-                left: '50%',
-                transform: `translate(${b.radius}px, 0) translate(50%, -50%)`,
-              }}
-              onMouseEnter={() => setHovered(b.id)}
-              onMouseLeave={() => setHovered(null)}
-            >
-              <img
-                src={b.logo}
-                alt={b.name}
+            <S.Orbit>
+              <S.Balloon
                 style={{
-                  ...styleJourney.image,
-                  width: responsive.imageSize,
-                  height: responsive.imageSize,
+                  width: responsive.balloonSize,
+                  height: responsive.balloonSize,
+                  transform: `translate(${b.radius}px, 0) translate(50%, -50%)`,
                 }}
-              />
+                onMouseEnter={() => setHovered(b.id)}
+                onMouseLeave={() => setHovered(null)}
+              >
+                <S.Logo
+                  src={b.logo}
+                  alt={b.name}
+                  style={{
+                    width: responsive.imageSize,
+                    height: responsive.imageSize,
+                  }}
+                />
 
-              {/* Tooltip */}
-              {hovered === b.id && (
-                <div style={styleJourney.tooltip}>{b.name}</div>
-              )}
-            </div>
+                {hovered === b.id && <S.Tooltip>{b.name}</S.Tooltip>}
+              </S.Balloon>
+            </S.Orbit>
           </motion.div>
         );
       })}
-    </div>
+    </S.Container>
   );
 }

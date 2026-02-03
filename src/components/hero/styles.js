@@ -1,97 +1,143 @@
+import styled from 'styled-components';
 import meImage from '../../assets/Igor.png';
 
-export const heroStyles = {
-  hero: {
-    height: '100vh',
-    display: 'flex',
-    position: 'relative',
-    overflow: 'hidden',
-    backgroundImage: `url(${meImage})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'right center',
-    backgroundRepeat: 'no-repeat',
-  },
+export const HeroSection = styled.section`
+  height: 100vh;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  background-image: url(${meImage});
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
+  width: 100%;
 
-  content: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    gap: 8,
-    color: 'white',
-    maxWidth: '80%',
-  },
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    height: unset;
+    background: unset;
+    width: unset;
+  }
+`;
 
-  body: {
-    color: '#B7F62B',
-    fontSize: '24px',
-    margin: 0,
-    padding: '4px 0px 0px',
-    fontWeight: 'lighter',
-  },
+export const imageSection = styled.section`
+  height: 49vh;
+  position: relative;
+  background-image: url(${meImage});
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
 
-  complement: {
-    color: '#EDEDF3',
-    fontSize: '24px',
-    margin: 0,
-    padding: '4px 0px 0px',
-    fontWeight: 'lighter',
-  },
+  display: none;
 
-  title: {
-    fontSize: 'clamp(80px, 5vw, 64px)',
-    fontWeight: 'bold',
-    margin: 0,
-    lineHeight: 1.1,
-    color: '#fff',
-  },
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    display: block;
+  }
+`;
 
-  buttonContainer: {
-    display: 'flex',
-    gap: 16,
-    marginTop: 24,
-    flexWrap: 'wrap',
-  },
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  color: white;
 
-  button: {
-    width: 216,
-    height: 32,
-    display: 'flex',
-    alignItems: 'center',
-    gap: 16,
-    border: '2px solid #1F1B26',
-    borderRadius: 12,
-    padding: 16,
-    cursor: 'pointer',
-    backgroundColor: '#0B090D',
-    transition: 'transform 0.25s ease, box-shadow 0.25s ease',
-    boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
-    textDecoration: 'none',
-  },
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    gap: 16px;
+  }
+`;
 
-  buttonHover: {
-    transform: 'translateY(-4px)',
-    boxShadow: '0 10px 20px rgba(0,0,0,0.35)',
-  },
+export const Body = styled.p`
+  color: #b7f62b;
+  font-size: clamp(16px, 5vw, 24px);
+  margin: 0;
+  padding: 4px 0 0;
+  font-weight: lighter;
 
-  buttonText: {
-    display: 'flex',
-    flexDirection: 'column',
-    color: 'white',
-    gap: 2,
-  },
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    text-align: center;
+  }
+`;
 
-  buttonTitle: {
-    fontWeight: 'bold',
-    fontSize: 20,
-  },
+export const Complement = styled.p`
+  color: #ededf3;
+  font-size: clamp(16px, 2vw, 24px);
+  margin: 0;
+  padding: 4px 0 0;
+  font-weight: lighter;
 
-  buttonBody: {
-    fontSize: 14,
-    opacity: 0.8,
-  },
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    text-align: center;
+  }
+`;
 
-  buttonLogo: {
-    width: 28,
-    height: 28,
-  },
-};
+export const Title = styled.h1`
+  font-size: clamp(48px, 5vw, 64px);
+  font-weight: bold;
+  margin: 0;
+  line-height: 1.1;
+  color: #fff;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    text-align: center;
+  }
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+  flex-wrap: nowrap;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    justify-content: center;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    flex-wrap: wrap;
+  }
+`;
+
+export const Button = styled.a`
+  width: 216px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 2px solid #1f1b26;
+  border-radius: 12px;
+  padding: 32px;
+  cursor: pointer;
+  background-color: #0b090d;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+  }
+`;
+
+export const ButtonLogo = styled.img`
+  width: 28px;
+  height: 28px;
+`;
+
+export const ButtonText = styled.div`
+  display: flex;
+  flex-direction: column;
+  color: white;
+  gap: 2px;
+`;
+
+export const ButtonTitle = styled.span`
+  font-weight: bold;
+  font-size: 20px;
+`;
+
+export const ButtonBody = styled.span`
+  font-size: clamp(12px, 5vw, 14px);
+  opacity: 0.8;
+`;

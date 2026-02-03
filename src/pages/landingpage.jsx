@@ -10,7 +10,7 @@ import Certify from '../components/certify';
 import Insta from '../components/insta';
 import Header from '../components/header';
 
-import styles from './styles';
+import * as S from './styles';
 
 function Landingpage() {
   const [showButton, setShowButton] = useState(false);
@@ -32,52 +32,24 @@ function Landingpage() {
   };
 
   return (
-    <div style={styles.container}>
-      <div style={styles.content}>
+    <S.LandingPage>
+      <S.LandingPageContainer>
         <Header />
-
-        <section id="hero">
-          <Hero />
-        </section>
-
-        <section id="about">
-          <About />
-        </section>
-
-        <section id="portfolio">
-          <Portfolio />
-        </section>
-
-        <section id="works">
-          <Works />
-        </section>
-
-        <section id="certify">
-          <Certify />
-        </section>
-
-        <section id="insta">
-          <Insta />
-        </section>
-
+        <Hero />
+        <About />
+        <Portfolio />
+        <Works />
+        <Certify />
+        <Insta />
         <Footer />
-      </div>
+      </S.LandingPageContainer>
 
       {showButton && (
-        <button
-          onClick={scrollToTop}
-          style={styles.backToTop}
-          onMouseEnter={(e) =>
-            (e.currentTarget.style.background = 'rgba(255,255,255,0.2)')
-          }
-          onMouseLeave={(e) =>
-            (e.currentTarget.style.background = 'rgba(255,255,255,0.1)')
-          }
-        >
+        <S.BackToTopButton onClick={scrollToTop}>
           <FaArrowUp />
-        </button>
+        </S.BackToTopButton>
       )}
-    </div>
+    </S.LandingPage>
   );
 }
 

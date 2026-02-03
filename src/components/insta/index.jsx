@@ -1,45 +1,41 @@
-import { socialStyles } from './styles';
 import { FaInstagram, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
+import * as S from './styles';
 
 function Social() {
   return (
-    // wrapper só pra dar espaçamento entre sessões
-    <div style={socialStyles.wrapper}>
-      <section style={socialStyles.section}>
-        <div style={socialStyles.content}>
-          <h1 style={socialStyles.title}>
-            Vamos nos <br /> conectar? <br />
-          </h1>
+    <S.Wrapper id="insta">
+      <S.Section>
+        <S.Content>
+          <S.Title>Vamos nos conectar?</S.Title>
 
-          <div style={socialStyles.icons}>
-            <a
+          <S.Icons>
+            <S.IconLink
               href="https://instagram.com/igorteufel.ux"
               target="_blank"
               rel="noreferrer"
-              style={socialStyles.icon}
             >
               <FaInstagram />
-            </a>
-            <a
+            </S.IconLink>
+
+            <S.IconLink
               href="https://linkedin.com/in/igor-teufel/"
               target="_blank"
               rel="noreferrer"
-              style={socialStyles.icon}
             >
               <FaLinkedin />
-            </a>
-            <a
+            </S.IconLink>
+
+            <S.IconLink
               href="https://wa.me/5512988194507?text=Oie%20Igor%20%E2%9C%8C%F0%9F%8F%BB"
               target="_blank"
               rel="noreferrer"
-              style={socialStyles.icon}
             >
               <FaWhatsapp />
-            </a>
-          </div>
-        </div>
-      </section>
-    </div>
+            </S.IconLink>
+          </S.Icons>
+        </S.Content>
+      </S.Section>
+    </S.Wrapper>
   );
 }
 

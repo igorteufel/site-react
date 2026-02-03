@@ -1,78 +1,55 @@
-const stylesFooter = {
-  section: {
-    position: 'relative',
-    width: '100%',
-    minHeight: '400px',
+import styled from 'styled-components';
 
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: '80px 0 0',
-  },
+export const Section = styled.footer`
+  position: relative;
+  width: 100%;
+  min-height: 400px;
 
-  background: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    zIndex: 0,
-  },
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  container: {
-    position: 'relative',
-    zIndex: 1,
-    width: '100%',
+  padding: 80px 0 0;
+`;
 
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: '24px',
-    boxSizing: 'border-box',
-  },
+export const Container = styled.div`
+  position: relative;
+  z-index: 1;
+  width: 100%;
 
-  title: {
-    fontSize: 'clamp(24px, 4vw, 40px)', // 👈 responsivo automático
-    fontWeight: 'bold',
-    margin: 0,
-    textAlign: 'center',
-    color: 'white',
-  },
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
 
-  subtitle: {
-    fontSize: 'clamp(14px, 2vw, 20px)', // 👈 responsivo automático
-    color: 'white',
-    textAlign: 'center',
-    margin: 0,
-    maxWidth: '600px',
-    fontWeight: '400',
-    lineHeight: '1.4',
-    opacity: 0.85,
-  },
+  box-sizing: border-box;
+`;
 
-  iconsContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: '24px',
-    marginTop: '24px',
-  },
+export const Title = styled.p`
+  font-size: clamp(24px, 4vw, 40px);
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+  color: white;
+`;
 
-  icon: {
-    width: '40px',
-    height: '40px',
-    cursor: 'pointer',
-  },
+export const Subtitle = styled.p`
+  font-size: clamp(14px, 2vw, 20px);
+  color: white;
+  text-align: center;
+  margin: 0;
+  max-width: 600px;
+  font-weight: 400;
+  line-height: 1.4;
+  opacity: 0.85;
+`;
 
-  joia: {
-    display: 'block',
-    marginTop: '24px',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    width: 'clamp(200px, 30vw, 400px)', // 👈 responsivo igual fizemos no outro
-    height: 'auto',
-  },
-};
-
-export default stylesFooter;
+export const Joia = styled.img`
+  display: block;
+  margin-top: 24px;
+  margin-left: auto;
+  margin-right: auto;
+  width: clamp(200px, 30vw, 400px);
+  height: auto;
+`;

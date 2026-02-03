@@ -1,68 +1,44 @@
-import { useState } from 'react';
-import { heroStyles } from './styles';
 import behancelogo from '../../assets/behancelogo.svg';
 import doclogo from '../../assets/pdflogo.svg';
+import * as S from './styles';
 
 function Hero() {
-  const [hovered, setHovered] = useState(null);
-
   return (
-    <section style={heroStyles.hero}>
-      <div style={heroStyles.content}>
-        <p style={heroStyles.body}>Igor Josef Teufel</p>
+    <S.HeroSection>
+      <S.Content>
+        <S.Body>Igor Josef Teufel</S.Body>
 
-        <p style={heroStyles.complement}>
-          Transformo ideias em experiências digitais
-        </p>
+        <S.Complement>Transformo ideias em experiências digitais</S.Complement>
 
-        <h1 style={heroStyles.title}>UX/UI Designer</h1>
+        <S.Title>UX/UI Designer</S.Title>
 
-        <div style={heroStyles.buttonContainer}>
-          {/* Botão Behance */}
-          <a
+        <S.ButtonContainer>
+          <S.Button
             href="https://www.behance.net/igor_teufel"
             target="_blank"
             rel="noreferrer"
-            style={{
-              ...heroStyles.button,
-              ...(hovered === 'behance' ? heroStyles.buttonHover : {}),
-            }}
-            onMouseEnter={() => setHovered('behance')}
-            onMouseLeave={() => setHovered(null)}
           >
-            <img
-              src={behancelogo}
-              alt="behance"
-              style={heroStyles.buttonLogo}
-            />
+            <S.ButtonLogo src={behancelogo} alt="behance" />
 
-            <div style={heroStyles.buttonText}>
-              <span style={heroStyles.buttonBody}>Meu portfólio</span>
-              <span style={heroStyles.buttonTitle}>Behance</span>
-            </div>
-          </a>
+            <S.ButtonText>
+              <S.ButtonBody>Meu portfólio</S.ButtonBody>
+              <S.ButtonTitle>Behance</S.ButtonTitle>
+            </S.ButtonText>
+          </S.Button>
 
-          {/* Botão PDF */}
-          <a
-            href="/curriculo.pdf"
-            download="curriculo.pdf"
-            style={{
-              ...heroStyles.button,
-              ...(hovered === 'pdf' ? heroStyles.buttonHover : {}),
-            }}
-            onMouseEnter={() => setHovered('pdf')}
-            onMouseLeave={() => setHovered(null)}
-          >
-            <img src={doclogo} alt="pdf" style={heroStyles.buttonLogo} />
+          <S.Button href="/curriculo.pdf" download="curriculo.pdf">
+            <S.ButtonLogo src={doclogo} alt="pdf" />
 
-            <div style={heroStyles.buttonText}>
-              <span style={heroStyles.buttonBody}>Meu currículo</span>
-              <span style={heroStyles.buttonTitle}>Download</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
+            <S.ButtonText>
+              <S.ButtonBody>Meu currículo</S.ButtonBody>
+              <S.ButtonTitle>Download</S.ButtonTitle>
+            </S.ButtonText>
+          </S.Button>
+        </S.ButtonContainer>
+
+        <S.imageSection> </S.imageSection>
+      </S.Content>
+    </S.HeroSection>
   );
 }
 

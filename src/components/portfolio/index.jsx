@@ -1,13 +1,19 @@
-import { useState } from 'react';
-import { stylePort } from './styles';
+import * as S from './styles';
 
 import helpsiImg from '../../assets/Card01.png';
 import coopspartyImg from '../../assets/Card02.png';
 import petcareImg from '../../assets/Card03.png';
 import evaImg from '../../assets/Card04.png';
 import lotusIMG from '../../assets/Card05.png';
+import Mei from '../../assets/Card06.png';
 
 const projects = [
+  {
+    id: 1,
+    title: 'Redesign Mei',
+    image: Mei,
+    link: 'https://www.behance.net/gallery/237371305/Redesign-App-MEI',
+  },
   {
     id: 2,
     title: 'Coopsparty',
@@ -33,7 +39,7 @@ const projects = [
     link: '',
   },
   {
-    id: 1,
+    id: 6,
     title: 'Helpsi 2024',
     image: helpsiImg,
     link: '',
@@ -41,44 +47,34 @@ const projects = [
 ];
 
 function Portfolio() {
-  const [hovered, setHovered] = useState(null);
-
   return (
-    <section style={stylePort.section}>
-      <h1 style={stylePort.title}>Portfólio</h1>
+    <S.Section id="portfolio">
+      <S.Title>Portfólio</S.Title>
 
-      <div style={stylePort.grid}>
-        {projects.map((project) => (
-          <a
-            key={project.id}
-            href={project.link}
-            target="_blank"
-            rel="noreferrer"
-            style={{
-              ...stylePort.card,
-              ...(hovered === project.id ? stylePort.cardHover : {}),
-            }}
-            onMouseEnter={() => setHovered(project.id)}
-            onMouseLeave={() => setHovered(null)}
-          >
-            {(project.title.includes('Helpsi') ||
-              project.title.includes('Lotus')) && (
-              <div style={stylePort.badge}>Em andamento</div>
-            )}
+      <S.Grid>
+        {projects.map((project) => {
+          const isWip =
+            project.title.includes('Helpsi') || project.title.includes('Lotus');
 
-            <div style={stylePort.imageWrapper}>
-              <img
-                src={project.image}
-                alt={project.title}
-                style={stylePort.image}
-              />
-            </div>
+          return (
+            <S.Card
+              key={project.id}
+              href={project.link}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {isWip && <S.Badge>Em andamento</S.Badge>}
 
-            <p style={stylePort.cardTitle}>{project.title}</p>
-          </a>
-        ))}
-      </div>
-    </section>
+              <S.ImageWrapper>
+                <S.Image src={project.image} alt={project.title} />
+              </S.ImageWrapper>
+
+              <S.CardTitle>{project.title}</S.CardTitle>
+            </S.Card>
+          );
+        })}
+      </S.Grid>
+    </S.Section>
   );
 }
 

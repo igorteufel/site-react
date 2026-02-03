@@ -1,77 +1,87 @@
-export const stylePort = {
-  section: {
-    width: '100%',
-    padding: '100px 0',
-    color: 'white',
-  },
+import styled from 'styled-components';
 
-  title: {
-    fontSize: '40px',
-    fontWeight: 'bold',
-    marginBottom: '32px',
-    color: 'white',
-  },
+export const Section = styled.section`
+  width: 100%;
+  color: white;
+`;
 
-  grid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    gap: '24px',
-  },
+export const Title = styled.h1`
+  font-size: clamp(16px, 5vw, 32px);
+  font-weight: bold;
+  margin-bottom: 24px;
+  color: white;
+`;
 
-  card: {
-    background: '#1a1a1d',
-    borderRadius: '12px',
-    overflow: 'hidden',
-    cursor: 'pointer',
-    position: 'relative',
-    textDecoration: 'none',
-    color: 'white',
-    aspectRatio: '1 / 1',
-    display: 'flex',
-    flexDirection: 'column',
-    boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
-    transition: 'transform 0.25s ease, box-shadow 0.25s ease',
-  },
+export const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
 
-  cardHover: {
-    transform: 'translateY(-6px)',
-    boxShadow: '0 12px 24px rgba(0,0,0,0.35)',
-  },
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-  imageWrapper: {
-    flex: 1,
-    overflow: 'hidden',
-  },
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+`;
 
-  image: {
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-    display: 'block',
-  },
+export const Card = styled.a`
+  background: #1a1a1d;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  color: white;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 
-  cardTitle: {
-    padding: '12px',
-    textAlign: 'center',
-    fontWeight: '500',
-    fontSize: '16px',
-    background: '#1a1a1d',
-  },
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+  }
+`;
 
-  badge: {
-    position: 'absolute',
-    top: '12px',
-    right: '12px',
-    padding: '8px 16px',
-    borderRadius: '40px',
-    fontSize: '12px',
-    color: '#B5FF49',
-    background: 'rgba(255,255,255,0.08)',
-    border: '1px solid rgba(255,255,255,0.2)',
-    backdropFilter: 'blur(10px)',
-    WebkitBackdropFilter: 'blur(10px)',
-    textTransform: 'uppercase',
-    letterSpacing: '1px',
-    zIndex: 2,
-  },
-};
+export const ImageWrapper = styled.div`
+  flex: 1;
+  overflow: hidden;
+`;
+
+export const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+`;
+
+export const CardTitle = styled.p`
+  padding: 16px;
+  text-align: center;
+  font-weight: 400;
+  font-size: clamp(16px, 5vw, 20px);
+  background: #1a1a1d;
+  margin: 0;
+`;
+
+export const Badge = styled.div`
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 8px 16px;
+  border-radius: 40px;
+  font-size: clamp(10px, 1vw, 12px);
+  color: #b5ff49;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  z-index: 2;
+`;

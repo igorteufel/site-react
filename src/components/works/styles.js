@@ -1,87 +1,94 @@
+import styled from 'styled-components';
 import wordbackground from '../../assets/Works.png';
 
-const styleJourney = {
-  container: {
-    position: 'relative',
-    width: '100%',
-    height: '100vh',
-    backgroundImage: `url(${wordbackground})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    overflow: 'hidden',
-    padding: '100px 0',
-  },
+export const Container = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-image: url(${wordbackground});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+`;
 
-  centerText: {
-    position: 'relative',
-    textAlign: 'center',
-    color: 'white',
-    zIndex: 3,
-    padding: '0 16px',
-  },
+/* TEXTO CENTRAL ABSOLUTO */
+export const CenterText = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-  title: {
-    fontSize: '40px',
-    fontWeight: 'bold',
-    marginBottom: '12px',
-  },
+  text-align: center;
+  color: white;
+  z-index: 3;
 
-  subtitle: {
-    fontSize: '24px',
-    opacity: 0.8,
-    maxWidth: '500px',
-    lineHeight: 1.5,
-    textAlign: 'center',
-  },
+  max-width: 600px;
+  padding: 0 16px;
 
-  orbit: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    borderRadius: '50%',
-    transformOrigin: '50% 50%',
-    zIndex: 2,
-  },
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`;
 
-  balloon: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    borderRadius: '50%',
-    background: '#1c1c24',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    boxShadow: '0 0 15px rgba(255, 255, 255, 0.2)',
-    cursor: 'pointer',
-    transition: 'transform 0.3s ease',
-    willChange: 'transform',
-  },
+export const Title = styled.h2`
+  font-size: clamp(24px, 5vw, 32px);
+  font-weight: bold;
+  margin: 0;
+`;
 
-  image: {
-    width: '70%',
-    height: '70%',
-    objectFit: 'contain',
-    pointerEvents: 'none',
-  },
+export const Subtitle = styled.p`
+  font-size: clamp(16px, 5vw, 20px);
+  opacity: 0.8;
+  line-height: 1.5;
+  margin: 0;
+`;
 
-  tooltip: {
-    position: 'absolute',
-    bottom: '110%',
-    left: '50%',
-    transform: 'translateX(-50%)',
-    backgroundColor: 'rgba(0,0,0,0.8)',
-    color: 'white',
-    padding: '6px 12px',
-    borderRadius: '6px',
-    fontSize: '14px',
-    whiteSpace: 'nowrap',
-    zIndex: 10,
-  },
-};
+/* ORBITA */
+export const Orbit = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  transform-origin: 50% 50%;
+  z-index: 2;
+`;
 
-export { styleJourney };
+/* BALÃO */
+export const Balloon = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  background: #1c1c24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  will-change: transform;
+`;
+
+/* LOGO */
+export const Logo = styled.img`
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  pointer-events: none;
+`;
+
+/* TOOLTIP */
+export const Tooltip = styled.div`
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  white-space: nowrap;
+  z-index: 10;
+`;

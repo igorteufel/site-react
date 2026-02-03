@@ -1,4 +1,4 @@
-import stylesAbout from './styles';
+import * as S from './styles';
 
 import Img1 from '../../assets/img1.png';
 import Img2 from '../../assets/img2.png';
@@ -15,44 +15,31 @@ const loopImages = [...images, ...images];
 
 function About() {
   return (
-    <section style={stylesAbout.section}>
-      <h1 style={stylesAbout.title}>Sobre mim</h1>
+    <S.Section id="about">
+      <S.Title>Sobre mim</S.Title>
 
-      <p style={stylesAbout.subtitle}>
+      <S.Subtitle>
         Sou movido pelo desafio de simplificar o complexo. Como Designer, minha
         missão é criar experiências digitais intuitivas, acessíveis e com
         impacto real. Ao longo da minha jornada, descobri que ensinar e
-        compartilhar também fazem parte do meu caminho.
-      </p>
+        compartilhar também fazem parte do meu caminho.{' '}
+        <p>
+          {' '}
+          Evoluir, criar e colaborar estão no centro de tudo que faço e é só o
+          começo.{' '}
+        </p>
+      </S.Subtitle>
 
-      <p style={stylesAbout.subtitle}>
-        Evoluir, criar e colaborar estão no centro de tudo que faço e é só o
-        começo.
-      </p>
-
-      <div style={stylesAbout.wrapper}>
-        <div style={stylesAbout.carousel}>
+      <S.Wrapper>
+        <S.Carousel>
           {loopImages.map((img, idx) => (
-            <div key={idx} style={stylesAbout.slide}>
-              <img src={img} alt="" style={stylesAbout.image} />
-            </div>
+            <S.Slide key={idx}>
+              <S.Image src={img} alt="" />
+            </S.Slide>
           ))}
-        </div>
-      </div>
-
-      <style>
-        {`
-          @keyframes aboutScroll {
-            0% {
-              transform: translateX(0);
-            }
-            100% {
-              transform: translateX(-50%);
-            }
-          }
-        `}
-      </style>
-    </section>
+        </S.Carousel>
+      </S.Wrapper>
+    </S.Section>
   );
 }
 

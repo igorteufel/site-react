@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { styleCertify } from './styles';
+import * as S from './styles';
 
 import certificado01 from '../../assets/certify01.png';
 import certificado02 from '../../assets/certify02.png';
@@ -25,73 +25,35 @@ const projects = [
   { id: 10, title: 'Certificado 10', image: certificado10 },
 ];
 
-// duplica p/ efeito de loop infinito
+// duplica p/ loop infinito
 const loopProjects = [...projects, ...projects];
 
 export default function Certify() {
   const [selected, setSelected] = useState(null);
 
-  const handleClick = (project) => {
-    setSelected(project);
-  };
-
-  const handleClose = () => {
-    setSelected(null);
-  };
-
   return (
-    <section style={styleCertify.section}>
-      <div style={styleCertify.container}>
-        <h1 style={styleCertify.title}>Certificados</h1>
+    <S.Section>
+      <S.Container>
+        <S.Title>Certificados</S.Title>
 
-        <div style={styleCertify.wrapper}>
-          <div
-            style={{
-              ...styleCertify.carousel,
-              animationPlayState: selected ? 'paused' : 'running',
-            }}
-          >
+        <S.Wrapper>
+          <S.Carousel paused={!!selected}>
             {loopProjects.map((project, i) => (
-              <div
-                key={i}
-                style={styleCertify.card}
-                onClick={() => handleClick(project)}
-              >
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  style={styleCertify.image}
-                />
-              </div>
+              <S.Card key={i} onClick={() => setSelected(project)}>
+                <S.Image src={project.image} alt={project.title} />
+              </S.Card>
             ))}
-          </div>
-        </div>
-      </div>
+          </S.Carousel>
+        </S.Wrapper>
+      </S.Container>
 
-      {/* Modal */}
       {selected && (
-        <div style={styleCertify.modalOverlay} onClick={handleClose}>
-          <div
-            style={styleCertify.modalContent}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <img
-              src={selected.image}
-              alt={selected.title}
-              style={styleCertify.modalImage}
-            />
-          </div>
-        </div>
+        <S.ModalOverlay onClick={() => setSelected(null)}>
+          <S.ModalContent onClick={(e) => e.stopPropagation()}>
+            <S.ModalImage src={selected.image} alt={selected.title} />
+          </S.ModalContent>
+        </S.ModalOverlay>
       )}
-
-      <style>
-        {`
-          @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-        `}
-      </style>
-    </section>
+    </S.Section>
   );
 }
