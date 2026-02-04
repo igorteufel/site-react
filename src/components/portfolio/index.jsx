@@ -36,13 +36,11 @@ const projects = [
     id: 5,
     title: 'Lotus Design System',
     image: lotusIMG,
-    link: '',
   },
   {
     id: 6,
     title: 'Helpsi 2024',
     image: helpsiImg,
-    link: '',
   },
 ];
 
