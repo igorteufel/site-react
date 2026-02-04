@@ -2,10 +2,10 @@ import styled, { keyframes } from 'styled-components';
 
 const aboutScroll = keyframes`
   0% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 `;
 
@@ -38,11 +38,23 @@ export const Carousel = styled.div`
   width: fit-content;
   animation: ${aboutScroll} 30s linear infinite;
   will-change: transform;
+
+  @media (max-width: 768px) {
+    animation-duration: 18s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
 `;
 
 export const Slide = styled.div`
   flex: 0 0 360px;
   aspect-ratio: 4 / 3;
+
+  @media (max-width: 768px) {
+    flex: 0 0 260px;
+  }
 `;
 
 export const Image = styled.img`
