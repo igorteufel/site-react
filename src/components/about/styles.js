@@ -37,7 +37,7 @@ export const Carousel = styled.div`
   display: flex;
   gap: 24px;
   width: max-content;
-  animation: ${scroll} 30s linear infinite;
+  animation: ${scroll} 25s linear infinite;
   animation-play-state: ${({ paused }) => (paused ? 'paused' : 'running')};
   will-change: transform;
 
@@ -49,17 +49,14 @@ export const Carousel = styled.div`
 export const Slide = styled.div`
   flex: 0 0 auto;
   width: 360px;
+  height: 240px;
   border-radius: 12px;
   overflow: hidden;
-
-  @media (max-width: 768px) {
-    width: 260px;
-  }
 `;
 
 export const Image = styled.img`
   width: 100%;
-  height: auto;
-  display: block;
+  height: 100%;
   object-fit: cover;
+  display: block;
 `;
