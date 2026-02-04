@@ -27,7 +27,7 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.p`
-  font-size: clamp(24px, 4vw, 40px);
+  font-size: clamp(20px, 2vw, 32px);
   font-weight: bold;
   margin: 0;
   text-align: center;
@@ -35,7 +35,7 @@ export const Title = styled.p`
 `;
 
 export const Subtitle = styled.p`
-  font-size: clamp(14px, 2vw, 20px);
+  font-size: clamp(16px, 2vw, 20px);
   color: white;
   text-align: center;
   margin: 0;

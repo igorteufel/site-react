@@ -6,7 +6,7 @@ export const Section = styled.section`
 `;
 
 export const Title = styled.h1`
-  font-size: clamp(16px, 5vw, 32px);
+  font-size: clamp(20px, 2vw, 32px);
   font-weight: bold;
   margin-bottom: 24px;
   color: white;
@@ -64,7 +64,7 @@ export const CardTitle = styled.p`
   padding: 16px;
   text-align: center;
   font-weight: 400;
-  font-size: clamp(16px, 5vw, 20px);
+  font-size: clamp(14px, 2vw, 20px);
   background: #1a1a1d;
   margin: 0;
 `;

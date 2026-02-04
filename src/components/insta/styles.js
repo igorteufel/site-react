@@ -35,7 +35,7 @@ export const Content = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: clamp(24px, 5vw, 32px);
+  font-size: clamp(20px, 2vw, 32px);
   margin: 0;
   font-family: 'Inter', sans-serif;
   font-weight: 900;

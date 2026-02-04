@@ -15,13 +15,13 @@ export const Section = styled.section`
 `;
 
 export const Title = styled.h1`
-  font-size: clamp(24px, 5vw, 32px);
+  font-size: clamp(20px, 2vw, 32px);
   font-weight: bold;
   margin-bottom: 24px;
 `;
 
 export const Subtitle = styled.p`
-  font-size: clamp(16px, 5vw, 20px);
+  font-size: clamp(16px, 2vw, 20px);
   opacity: 0.8;
   line-height: 1.5;
   margin-bottom: 24px;
@@ -36,7 +36,7 @@ export const Carousel = styled.div`
   display: flex;
   gap: 24px;
   width: fit-content;
-  animation: ${aboutScroll} 40s linear infinite;
+  animation: ${aboutScroll} 30s linear infinite;
   will-change: transform;
 `;
 

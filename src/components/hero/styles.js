@@ -48,10 +48,10 @@ export const Content = styled.div`
 
 export const Body = styled.p`
   color: #b7f62b;
-  font-size: clamp(16px, 5vw, 24px);
+  font-size: clamp(16px, 2vw, 24px);
   margin: 0;
   padding: 4px 0 0;
-  font-weight: lighter;
+  font-weight: bold;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     text-align: center;
@@ -71,7 +71,7 @@ export const Complement = styled.p`
 `;
 
 export const Title = styled.h1`
-  font-size: clamp(48px, 5vw, 64px);
+  font-size: clamp(40px, 2vw, 64px);
   font-weight: bold;
   margin: 0;
   line-height: 1.1;
@@ -98,10 +98,11 @@ export const ButtonContainer = styled.div`
 `;
 
 export const Button = styled.a`
-  width: 216px;
+  width: 220px;
   height: 32px;
   display: flex;
   align-items: center;
+
   gap: 16px;
   border: 2px solid #1f1b26;
   border-radius: 12px;
@@ -117,6 +118,17 @@ export const Button = styled.a`
   &:hover {
     transform: translateY(-4px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+      justify-content: center;
+      width: 300px;
+    }
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 300px;
+    }
   }
 `;
 

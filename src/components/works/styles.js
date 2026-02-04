@@ -22,8 +22,8 @@ export const CenterText = styled.div`
   text-align: center;
   color: white;
   z-index: 3;
+  width: 100%;
 
-  max-width: 600px;
   padding: 0 16px;
 
   display: flex;
@@ -31,14 +31,14 @@ export const CenterText = styled.div`
   gap: 12px;
 `;
 
-export const Title = styled.h2`
-  font-size: clamp(24px, 5vw, 32px);
+export const Title = styled.h1`
+  font-size: clamp(20px, 2vw, 32px);
   font-weight: bold;
   margin: 0;
 `;
 
 export const Subtitle = styled.p`
-  font-size: clamp(16px, 5vw, 20px);
+  font-size: clamp(16px, 2vw, 20px);
   opacity: 0.8;
   line-height: 1.5;
   margin: 0;

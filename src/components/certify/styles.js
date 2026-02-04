@@ -25,7 +25,7 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: clamp(24px, 5vw, 40px);
+  font-size: clamp(20px, 2vw, 32px);
   font-weight: bold;
   margin: 0;
 `;
