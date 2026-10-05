@@ -1,69 +1,7 @@
 import styled from 'styled-components';
-import Futurista from '../../assets/Futurista.png';
-
-export const Wrapper = styled.div`
-  padding: 80px 0;
-  width: 100%;
-`;
-
-export const Section = styled.section`
-  min-height: 700px;
-  border-radius: 24px;
-  background-image: url(${Futurista});
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  color: white;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    min-height: 400px;
-    height: 50%;
-  }
-`;
-
-export const Content = styled.div`
-  width: 100%;
-  max-width: 1440px;
-  padding: 64px 60px;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-`;
-
-export const Title = styled.h1`
-  font-size: clamp(20px, 2vw, 32px);
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  font-weight: 900;
-`;
-
-export const Icons = styled.div`
-  display: flex;
-  gap: 24px;
-`;
-
-export const IconLink = styled.a`
-  font-size: 32px;
-  color: white;
-  transition:
-    transform 0.3s ease,
-    color 0.3s ease;
-  text-decoration: none;
-  cursor: pointer;
-
-  &:hover {
-    transform: translateY(-4px);
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: 24px;
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 20px;
-  }
-`;
+export const Section = styled.section`position: relative; min-height: 760px; padding: 120px 32px; display: grid; place-items: center; overflow: hidden; color: ${({ theme }) => theme.colors.dark}; background: ${({ theme }) => theme.colors.accent}; scroll-margin-top: 80px; @media (max-width: ${({ theme }) => theme.breakpoints.sm}) { min-height: 650px; padding: 96px 16px; }`;
+export const Content = styled.div`position: relative; z-index: 2; width: min(100%, 1100px); display: flex; flex-direction: column; align-items: center; gap: 34px; text-align: center; > p { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }`;
+export const Title = styled.h2`font-size: clamp(48px,8vw,112px); font-weight: 600; line-height: .9; letter-spacing: -.07em; em { opacity: .48; font-style: normal; }`;
+export const Whatsapp = styled.a`min-height: 58px; padding: 0 24px; display: inline-flex; align-items: center; justify-content: center; gap: 14px; border-radius: ${({ theme }) => theme.radii.round}; color: ${({ theme }) => theme.colors.text}; background: ${({ theme }) => theme.colors.dark}; font-size: 14px; font-weight: 700; text-decoration: none; transition: transform 220ms ease; &:hover { transform: translateY(-4px) scale(1.02); }`;
+export const Socials = styled.div`display: flex; gap: 10px; a { width: 46px; height: 46px; display: grid; place-items: center; border: 1px solid rgba(9,11,13,.28); border-radius: 50%; color: ${({ theme }) => theme.colors.dark}; text-decoration: none; transition: background 180ms ease, color 180ms ease, transform 180ms ease; &:hover { color: ${({ theme }) => theme.colors.accent}; background: ${({ theme }) => theme.colors.dark}; transform: translateY(-3px); } }`;
+export const Decoration = styled.span`position: absolute; left: 50%; bottom: -.13em; transform: translateX(-50%); color: rgba(9,11,13,.06); font-family: ${({ theme }) => theme.typography.display}; font-size: clamp(130px,22vw,340px); font-weight: 700; line-height: .8; letter-spacing: -.09em; white-space: nowrap;`;

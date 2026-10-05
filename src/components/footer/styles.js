@@ -1,55 +1,5 @@
 import styled from 'styled-components';
-
-export const Section = styled.footer`
-  position: relative;
-  width: 100%;
-  min-height: 400px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  padding: 80px 0 0;
-`;
-
-export const Container = styled.div`
-  position: relative;
-  z-index: 1;
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 24px;
-
-  box-sizing: border-box;
-`;
-
-export const Title = styled.p`
-  font-size: clamp(20px, 2vw, 32px);
-  font-weight: bold;
-  margin: 0;
-  text-align: center;
-  color: white;
-`;
-
-export const Subtitle = styled.p`
-  font-size: clamp(16px, 2vw, 20px);
-  color: white;
-  text-align: center;
-  margin: 0;
-  max-width: 600px;
-  font-weight: 400;
-  line-height: 1.4;
-  opacity: 0.85;
-`;
-
-export const Joia = styled.img`
-  display: block;
-  margin-top: 24px;
-  margin-left: auto;
-  margin-right: auto;
-  width: clamp(200px, 30vw, 400px);
-  height: auto;
-`;
+export const Footer = styled.footer`min-height: 150px; padding: 32px max(32px,calc((100% - 1280px)/2)); display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px; color: ${({ theme }) => theme.colors.text}; background: ${({ theme }) => theme.colors.background}; @media (max-width: ${({ theme }) => theme.breakpoints.md}) { grid-template-columns: 1fr; padding: 42px 16px; text-align: center; justify-items: center; }`;
+export const Brand = styled.div`display: flex; align-items: center; gap: 12px; span { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%; color: ${({ theme }) => theme.colors.dark}; background: ${({ theme }) => theme.colors.accent}; font-family: ${({ theme }) => theme.typography.display}; font-size: 12px; font-weight: 700; } div { display: flex; flex-direction: column; gap: 2px; } strong { font-size: 13px; } small { color: ${({ theme }) => theme.colors.muted}; font-size: 9px; text-transform: uppercase; letter-spacing: .08em; }`;
+export const Copy = styled.p`color: ${({ theme }) => theme.colors.muted}; font-size: 10px;`;
+export const Top = styled.a`justify-self: end; color: ${({ theme }) => theme.colors.text}; font-size: 10px; font-weight: 700; text-decoration: none; text-transform: uppercase; letter-spacing: .08em; @media (max-width: ${({ theme }) => theme.breakpoints.md}) { justify-self: center; }`;

@@ -1,125 +1,57 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
+import next from '../../assets/logos/next-reference.png';
+import weni from '../../assets/logos/weni-icon.jpg';
+import duo from '../../assets/logos/duosystem-icon.png';
+import track from '../../assets/logos/track-icon.png';
+import cooper from '../../assets/logos/coopersystem-icon.png';
+import { motionState, reveal, stagger } from '../../styles/motion';
 import * as S from './styles';
-import { useResponsive } from '../../hooks/useResponsive';
 
-import Next from '../../assets/nextcircle.png';
-import Weni from '../../assets/wenicircle.png';
-import Duosystem from '../../assets/duocircle.png';
-import Track from '../../assets/trackcircle.png';
-import CooperSystem from '../../assets/coopercircle.png';
+const companies = [
+  { name: 'Next Tecnologia', logo: next, note: 'Onde a jornada começou', surface: 'dark', scale: 1.22 },
+  { name: 'Weni', logo: weni, note: 'Experiências conversacionais', scale: 1.08, offsetX: -7 },
+  { name: 'Duosystem', logo: duo, note: 'Produtos e problemas complexos', scale: 1.08, offsetY: -8 },
+  { name: 'Track.co', logo: track, note: 'Experiência orientada por dados', scale: .92 },
+  { name: 'Coopersystem', logo: cooper, note: 'Design em escala · hoje', scale: .88 },
+];
+
+const MotionHeader = motion.create(S.Header);
+const MotionOrbit = motion.create(S.Orbit);
 
 export default function Works() {
-  const { isMobile, isTablet } = useResponsive();
-  const [hovered, setHovered] = useState(null);
-
-  const responsive = {
-    balloonSize: isMobile ? 60 : isTablet ? 80 : 100,
-    imageSize: isMobile ? '60%' : isTablet ? '70%' : '70%',
-  };
-
-  const balloons = [
-    {
-      id: 1,
-      logo: Next,
-      name: 'Next Tecnologia',
-      radius: isMobile ? 100 : isTablet ? 130 : 150,
-      speed: 12,
-    },
-    {
-      id: 2,
-      logo: Weni,
-      name: 'Weni',
-      radius: isMobile ? 130 : isTablet ? 170 : 200,
-      speed: 18,
-    },
-    {
-      id: 3,
-      logo: Duosystem,
-      name: 'Duosystem',
-      radius: isMobile ? 150 : isTablet ? 200 : 250,
-      speed: 15,
-    },
-    {
-      id: 4,
-      logo: Track,
-      name: 'Track.co',
-      radius: isMobile ? 120 : isTablet ? 150 : 180,
-      speed: 20,
-    },
-    {
-      id: 5,
-      logo: CooperSystem,
-      name: 'Coopersystem',
-      radius: isMobile ? 140 : isTablet ? 180 : 220,
-      speed: 14,
-    },
-  ];
+  const shouldReduceMotion = useReducedMotion();
+  const state = motionState(shouldReduceMotion);
 
   return (
-    <S.Container id="works">
-      {/* TEXTO FIXO NO CENTRO */}
-      <S.CenterText>
-        <S.Title>A Jornada até aqui</S.Title>
+    <S.Section id="works" aria-labelledby="works-title">
+      <S.Inner>
+        <MotionHeader {...state} variants={reveal}>
+          <S.Kicker><span>03</span> Trajetória</S.Kicker>
+          <S.Title id="works-title">Uma jornada de<br /><em>evolução contínua.</em></S.Title>
+          <S.Intro>Mais de 5 anos atravessando contextos, negócios e produtos diferentes. Cada etapa ampliou meu repertório e a forma como eu projeto.</S.Intro>
+        </MotionHeader>
 
-        <S.Subtitle>
-          Há mais de 5 anos atuo como UX/UI Design, criando produtos digitais
-          para web e mobile. Passei por empresas como Next Tecnologia, Weni,
-          Duosystem, Track.co e, atualmente, Coopersystem, sempre unindo design
-          e estratégia para entregar experiências consistentes e evoluir Design
-          Systems.
-        </S.Subtitle>
-      </S.CenterText>
+        <MotionOrbit {...state} variants={stagger} aria-label="Linha do tempo profissional de Igor Teufel">
+          <S.Ring $outer aria-hidden="true" />
+          <S.Ring aria-hidden="true" />
+          <S.Center variants={reveal}>
+            <strong>+05</strong>
+            <span>anos criando<br />produtos digitais</span>
+          </S.Center>
+          <S.CompanyList>
+            {companies.map((company, index) => (
+              <S.CompanyNode key={company.name} $index={index} variants={reveal}>
+                <S.Step>{String(index + 1).padStart(2, '0')}</S.Step>
+                <S.LogoWrap $surface={company.surface} $scale={company.scale} $offsetX={company.offsetX} $offsetY={company.offsetY}><img src={company.logo} alt={`Logo da ${company.name}`} loading="lazy" /></S.LogoWrap>
+                <S.CompanyCopy><strong>{company.name}</strong><span>{company.note}</span></S.CompanyCopy>
+              </S.CompanyNode>
+            ))}
+          </S.CompanyList>
+          <S.Direction aria-hidden="true"><span>Início</span><i /><span>Hoje</span></S.Direction>
+        </MotionOrbit>
 
-      {/* BALÕES ORBITANDO */}
-      {balloons.map((b) => {
-        const randomAngle = Math.random() * 360;
-
-        return (
-          <motion.div
-            key={b.id}
-            initial={{ rotate: randomAngle }}
-            animate={{ rotate: 360 + randomAngle }}
-            transition={{
-              repeat: Infinity,
-              duration: b.speed,
-              ease: 'linear',
-            }}
-            style={{
-              width: b.radius * 2,
-              height: b.radius * 2,
-              marginLeft: -b.radius,
-              marginTop: -b.radius,
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-            }}
-          >
-            <S.Orbit>
-              <S.Balloon
-                style={{
-                  width: responsive.balloonSize,
-                  height: responsive.balloonSize,
-                  transform: `translate(${b.radius}px, 0) translate(50%, -50%)`,
-                }}
-                onMouseEnter={() => setHovered(b.id)}
-                onMouseLeave={() => setHovered(null)}
-              >
-                <S.Logo
-                  src={b.logo}
-                  alt={b.name}
-                  style={{
-                    width: responsive.imageSize,
-                    height: responsive.imageSize,
-                  }}
-                />
-
-                {hovered === b.id && <S.Tooltip>{b.name}</S.Tooltip>}
-              </S.Balloon>
-            </S.Orbit>
-          </motion.div>
-        );
-      })}
-    </S.Container>
+        <S.Expertise><span>UX Strategy</span><span>Product Design</span><span>UI Design</span><span>Design Systems</span><span>Prototipação</span><span>Handoff</span></S.Expertise>
+      </S.Inner>
+    </S.Section>
   );
 }

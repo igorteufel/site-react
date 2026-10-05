@@ -1,96 +1,24 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
-const scroll = keyframes`
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+export const Section = styled.section`padding: 140px 32px; color: ${({ theme }) => theme.colors.text}; overflow: hidden; @media (max-width: ${({ theme }) => theme.breakpoints.sm}) { padding: 92px 16px; }`;
+export const Inner = styled.div`width: min(100%, ${({ theme }) => theme.layout.contentMax}); margin: 0 auto;`;
+export const Header = styled.div`margin: 0 auto 58px; display: grid; grid-template-columns: .6fr 1.2fr .7fr; gap: 34px; align-items: end; > p:last-child { color: ${({ theme }) => theme.colors.muted}; line-height: 1.65; } @media (max-width: ${({ theme }) => theme.breakpoints.md}) { grid-template-columns: 1fr; gap: 20px; }`;
+export const Kicker = styled.p`align-self: start; color: rgba(245,243,238,.66); font-size: 11px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; span { margin-right: 12px; color: ${({ theme }) => theme.colors.accent}; }`;
+export const Title = styled.h2`font-size: ${({ theme }) => theme.typography.sizes.section}; font-weight: 900; line-height: .98; letter-spacing: -.055em;`;
+export const Carousel = styled.div`padding: 20px; overflow: hidden; border: 1px solid ${({ theme }) => theme.colors.border}; border-radius: ${({ theme }) => theme.radii.lg}; background: rgba(255,255,255,.025); box-shadow: 0 28px 80px rgba(0,0,0,.24); @media (max-width: ${({ theme }) => theme.breakpoints.sm}) { padding: 12px; }`;
+export const Viewport = styled.div`position: relative; height: clamp(300px, 34vw, 440px); overflow: hidden; border-radius: 16px; touch-action: pan-y; cursor: grab; &:active { cursor: grabbing; } @media (max-width: ${({ theme }) => theme.breakpoints.sm}) { height: 300px; }`;
+export const Slide = styled.article`
+  position: absolute; inset: 0 auto 0 50%; width: min(56%, 690px); transform: ${({ $offset, $active }) => `translateX(calc(-50% + ${$offset * 76}%)) scale(${$active ? 1 : .84})`}; opacity: ${({ $offset }) => Math.abs($offset) > 1 ? 0 : Math.abs($offset) === 1 ? .46 : 1}; z-index: ${({ $active }) => $active ? 3 : 1}; pointer-events: ${({ $offset }) => Math.abs($offset) > 1 ? 'none' : 'auto'}; transition: transform 620ms ${({ theme }) => theme.motion.ease}, opacity 420ms ${({ theme }) => theme.motion.ease};
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) { width: min(68%, 620px); transform: ${({ $offset, $active }) => `translateX(calc(-50% + ${$offset * 84}%)) scale(${$active ? 1 : .82})`}; }
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) { width: 88%; transform: ${({ $offset, $active }) => `translateX(calc(-50% + ${$offset * 94}%)) scale(${$active ? 1 : .8})`}; }
+  @media (prefers-reduced-motion: reduce) { transition: none; }
 `;
-
-export const Section = styled.section`
-  width: 100%;
-  color: white;
-  padding: 80px 0;
-  display: flex;
-  justify-content: center;
-`;
-
-export const Container = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-`;
-
-export const Title = styled.h1`
-  font-size: clamp(20px, 2vw, 32px);
-  font-weight: bold;
-  margin: 0;
-`;
-
-export const Wrapper = styled.div`
-  width: 100%;
-  overflow: hidden;
-`;
-
-export const Carousel = styled.div`
-  display: flex;
-  gap: 24px;
-  width: max-content;
-  animation: ${scroll} 50s linear infinite;
-  animation-play-state: ${({ paused }) => (paused ? 'paused' : 'running')};
-`;
-
-export const Card = styled.div`
-  flex: 0 0 auto;
-  width: 360px;
-  border-radius: 12px;
-  background: #1a1a1d;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-
-  &:hover {
-    transform: scale(1.02);
-  }
-`;
-
-export const Image = styled.img`
-  width: 100%;
-  height: auto;
-  display: block;
-`;
-
-/* Modal */
-
-export const ModalOverlay = styled.div`
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  cursor: pointer;
-`;
-
-export const ModalContent = styled.div`
-  background-color: #1a1a1d;
-  border-radius: 12px;
-  padding: 20px;
-  max-width: 90%;
-  max-height: 90%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: default;
-`;
-
-export const ModalImage = styled.img`
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-`;
+export const Card = styled.button`position: relative; width: 100%; height: 100%; display: block; padding: 0; overflow: hidden; border: 1px solid ${({ theme }) => theme.colors.border}; border-radius: 16px; background: ${({ theme }) => theme.colors.surface}; box-shadow: 0 26px 64px rgba(0,0,0,.34); cursor: pointer; img { width: 100%; height: 100%; display: block; object-fit: cover; } &::after { content: ''; position: absolute; inset: 54% 0 0; background: linear-gradient(transparent,rgba(9,11,13,.48)); pointer-events: none; }`;
+export const Caption = styled.span`position: absolute; z-index: 2; left: 14px; right: 14px; bottom: 14px; min-height: 68px; padding: 14px 16px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; border: 1px solid rgba(255,255,255,.18); border-radius: 12px; color: ${({ theme }) => theme.colors.text}; background: rgba(9,11,13,.7); backdrop-filter: blur(16px); text-align: left; span { color: ${({ theme }) => theme.colors.accent}; font-size: 8px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; } strong { margin-top: 4px; font-size: 14px; }`;
+export const Toolbar = styled.div`min-height: 74px; padding: 16px 4px 0; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 20px; @media (max-width: ${({ theme }) => theme.breakpoints.sm}) { grid-template-columns: 1fr; gap: 12px; }`;
+export const ActiveCopy = styled.div`display: flex; align-items: center; gap: 22px; span { color: ${({ theme }) => theme.colors.accent}; font-size: 10px; font-weight: 900; letter-spacing: .1em; } strong { color: ${({ theme }) => theme.colors.muted}; font-size: 11px; } @media (max-width: ${({ theme }) => theme.breakpoints.sm}) { strong { display: none; } }`;
+export const Controls = styled.div`display: grid; grid-template-columns: 44px auto 44px; align-items: center; gap: 10px; > button { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid ${({ theme }) => theme.colors.border}; border-radius: 50%; color: ${({ theme }) => theme.colors.text}; background: rgba(255,255,255,.04); cursor: pointer; transition: color 180ms ease, background 180ms ease; } > button:hover { color: ${({ theme }) => theme.colors.dark}; background: ${({ theme }) => theme.colors.accent}; } @media (max-width: ${({ theme }) => theme.breakpoints.sm}) { justify-self: stretch; grid-template-columns: 44px 1fr 44px; }`;
+export const Dots = styled.div`display: flex; align-items: center; justify-content: center; gap: 2px; button { width: 17px; height: 20px; padding: 0; border: 0; border-radius: 50%; background: transparent; cursor: pointer; } button::after { content: ''; width: 5px; height: 5px; display: block; margin: auto; border-radius: 999px; background: #3d4247; transition: width 260ms ease, background 260ms ease; } button.active::after { width: 15px; background: ${({ theme }) => theme.colors.accent}; }`;
+export const Overlay = styled.div`position: fixed; inset: 0; z-index: 3000; padding: 24px; display: grid; place-items: center; background: rgba(4,5,6,.88); backdrop-filter: blur(16px);`;
+export const Dialog = styled.div`position: relative; width: min(900px,100%); padding: 12px; border: 1px solid rgba(255,255,255,.14); border-radius: ${({ theme }) => theme.radii.lg}; background: ${({ theme }) => theme.colors.surface}; img { width: 100%; max-height: 82vh; display: block; object-fit: contain; border-radius: 14px; }`;
+export const Close = styled.button`position: absolute; top: -18px; right: -18px; width: 44px; height: 44px; display: grid; place-items: center; border: 0; border-radius: 50%; color: ${({ theme }) => theme.colors.dark}; background: ${({ theme }) => theme.colors.accent}; cursor: pointer;`;
